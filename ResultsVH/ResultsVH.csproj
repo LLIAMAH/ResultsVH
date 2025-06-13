@@ -5,11 +5,11 @@
 	    <ImplicitUsings>enable</ImplicitUsings>
 	    <Nullable>enable</Nullable>
         <PackageId>ResultsVH</PackageId>
-        <Version>1.0.1</Version>
+        <Version>1.0.2</Version>
         <Authors>Vasiliy Himchenko</Authors>
         <Company>Free Agent</Company>
         <Description>
-			ResultsVH is librarym which contains a set of classes and methods to work with results in C# applications. It provides a way to handle success and failure cases in a consistent manner, making it easier to manage application logic and error handling.
+			ResultsVH is library, which contains a set of classes and methods to work with results in .NET applications. It provides a way to handle success and failure cases in a consistent manner, making it easier to manage application logic and error handling.
 		</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/LLIAMAH/ResultsVH</RepositoryUrl>
