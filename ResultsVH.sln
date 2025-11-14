@@ -1,14 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36203.30 d17.14
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.11205.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResultsVH", "ResultsVH\ResultsVH.csproj", "{D6BF96EE-D698-4297-BEF0-978FCCA686D4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
 	ProjectSection(SolutionItems) = preProject
+		Directory.Packages.props = Directory.Packages.props
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResultsVH.Tests", "ResultsVH.Tests\ResultsVH.Tests.csproj", "{E2B24480-AEC6-4BC0-9C67-D4001FC4A355}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +23,10 @@ Global
 		{D6BF96EE-D698-4297-BEF0-978FCCA686D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6BF96EE-D698-4297-BEF0-978FCCA686D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6BF96EE-D698-4297-BEF0-978FCCA686D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2B24480-AEC6-4BC0-9C67-D4001FC4A355}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2B24480-AEC6-4BC0-9C67-D4001FC4A355}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2B24480-AEC6-4BC0-9C67-D4001FC4A355}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2B24480-AEC6-4BC0-9C67-D4001FC4A355}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
