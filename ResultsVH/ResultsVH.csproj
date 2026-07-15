@@ -1,22 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-	    <TargetFramework>net10.0</TargetFramework>
-	    <ImplicitUsings>enable</ImplicitUsings>
-	    <Nullable>enable</Nullable>
+  <PropertyGroup>
+      <TargetFramework>net10.0</TargetFramework>
+      <ImplicitUsings>enable</ImplicitUsings>
+      <Nullable>enable</Nullable>
         <PackageId>ResultsVH</PackageId>
-        <Version>10.0.0</Version>
-        <AssemblyVersion>10.0.0.0</AssemblyVersion>
-        <FileVersion>10.0.0.0</FileVersion>
+        <Version>10.0.1</Version>
+        <AssemblyVersion>10.0.1.0</AssemblyVersion>
+        <FileVersion>10.0.1.0</FileVersion>
         <Authors>Vasiliy Himchenko</Authors>
         <Company>Free Agent</Company>
         <Description>
-			ResultsVH is library, which contains a set of classes and methods to work with results in .NET applications. It provides a way to handle success and failure cases in a consistent manner, making it easier to manage application logic and error handling.
-		</Description>
+      ResultsVH is library, which contains a set of classes and methods to work with results in .NET applications. It provides a way to handle success and failure cases in a consistent manner, making it easier to manage application logic and error handling.
+    </Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/LLIAMAH/ResultsVH</RepositoryUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-	</PropertyGroup>
+  </PropertyGroup>
     <ItemGroup>
         <None Include="..\README.md" Pack="true" PackagePath="" />
     </ItemGroup>
