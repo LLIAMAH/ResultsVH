@@ -1,12 +1,19 @@
 ﻿using ResultsVH.Interfaces;
+using System.Diagnostics.CodeAnalysis;
+using System.Text.Json.Serialization;
 
 namespace ResultsVH.Implementations;
 
 public class ResultBool : Result<bool>, IResultBool
 {
-    public ResultBool(bool data) : base(data) { }
 
-    public ResultBool(string message) : base(message) { }
+    [JsonConstructor]
+    protected ResultBool(bool isSuccess, [MaybeNull] bool data, string message) 
+        : base(isSuccess, data, message) { }
+
+    public ResultBool(bool data) : this(true, data, null!) { }
+
+    public ResultBool(string message) : this(false, false, message) { }
 }
 
 public class ResultBoolWithException 
@@ -20,9 +27,13 @@ public class ResultBoolWithException
 public class ResultBoolWithErrorsArray
     : ResultWithErrorsArray<bool>, IResultBoolWithErrorsArray
 {
-    public ResultBoolWithErrorsArray(bool data) : base(data) { }
+    [JsonConstructor]
+    protected ResultBoolWithErrorsArray(bool isSuccess, [MaybeNull] bool data, string[] message)
+        : base(isSuccess, data, message) { }
 
-    public ResultBoolWithErrorsArray(string[] message) : base(message) { }
+    public ResultBoolWithErrorsArray(bool data) : this(true, data, null!) { }
+
+    public ResultBoolWithErrorsArray(string[] message) : this(false, false, message) { }
 }
 
 public class ResultBoolWithExceptionsArray 

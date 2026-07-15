@@ -1,24 +1,25 @@
 ﻿using ResultsVH.Interfaces;
+using System.Diagnostics.CodeAnalysis;
+using System.Text.Json.Serialization;
 
 namespace ResultsVH.Implementations;
 
 public class Result<T, TE> : IResult<T, TE>
 {
     public bool IsSuccess { get; }
+    [MaybeNull]
     public T? Data { get; }
     public TE? Message { get; }
 
-    public Result(T data)
+    [JsonConstructor]
+    protected Result(bool isSuccess, [MaybeNull] T? data, TE? message)
     {
-        this.IsSuccess = true;
-        this.Data = data;
-        this.Message = default;
+        IsSuccess = isSuccess;
+        Data = data;
+        Message = message;
     }
 
-    public Result(TE message)
-    {
-        this.IsSuccess = false;
-        this.Message = message;
-        this.Data = default;
-    }
+    public Result(T data) : this(true, data, default(TE)) { }
+
+    public Result(TE message) : this(false, default(T), message) { }
 }

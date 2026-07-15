@@ -1,12 +1,19 @@
 ﻿using ResultsVH.Interfaces;
+using System.Diagnostics.CodeAnalysis;
+using System.Text.Json.Serialization;
 
 namespace ResultsVH.Implementations;
 
 public class ResultList<T> : Result<IList<T>>, IResultList<T>
 {
-    public ResultList(IList<T> data) : base(data) { }
 
-    public ResultList(string message) : base(message) { }
+    [JsonConstructor]
+    protected ResultList(bool isSuccess, [MaybeNull] IList<T> data, string message)
+        : base(isSuccess, data, message) { }
+
+    public ResultList(IList<T> data) : this(true, data, null!) { }
+
+    public ResultList(string message) : this(false, null!, message) { }
 }
 
 public class ResultListWithException<T> 
