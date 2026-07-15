@@ -1,4 +1,8 @@
 ﻿using ResultsVH.Implementations;
+using System.Net.Http.Json;
+using System.Transactions;
+using ResultsVH.Tests.Models;
+using ResultsVH.Tests.RequestHandler;
 
 namespace ResultsVH.Tests
 {
@@ -158,6 +162,92 @@ namespace ResultsVH.Tests
             Assert.False(badExArr.IsSuccess);
             Assert.Null(badExArr.Data);
             Assert.Equal(exs, badExArr.Message);
+        }
+
+        private string PrepareFakeData1()
+        {
+            return """
+                   {
+                     "isSuccess": true,
+                     "data": [
+                       {
+                         "id": 1,
+                         "name": "Scenario 1"
+                       },
+                       {
+                         "id": 2,
+                         "name": "Scenario 2"
+                       }
+                     ],
+                     "message": null
+                   }
+                   """;
+        }
+
+        private string PrepareFakeDataBool1()
+        {
+            return """
+                   {
+                     "isSuccess": true,
+                     "data": true,
+                     "message": null
+                   }
+                   """;
+        }
+
+        private HttpClient PrepareFakeHandler(string json)
+        {
+            var handler = new FakeHttpMessageHandler(json);
+
+            var httpClient = new HttpClient(handler)
+            {
+                BaseAddress = new Uri("https://localhost")
+            };
+
+            return httpClient;
+        }
+
+        [Fact]
+        public async Task GetFromJsonAsync_ShouldDeserialize_ResultList()
+        {
+            // Arrange
+            var httpClient = PrepareFakeHandler(PrepareFakeData1());
+
+            // Act
+            var result = await httpClient.GetFromJsonAsync<ResultList<TestTypeModel>>("/api/data");
+
+            // Assert
+            Assert.NotNull(result);
+
+            Assert.True(result.IsSuccess);
+            Assert.Null(result.Message);
+
+            Assert.NotNull(result.Data);
+            Assert.Equal(2, result.Data.Count);
+
+            Assert.Equal(1, result.Data[0].Id);
+            Assert.Equal("Scenario 1", result.Data[0].Name);
+
+            Assert.Equal(2, result.Data[1].Id);
+            Assert.Equal("Scenario 2", result.Data[1].Name);
+        }
+
+        [Fact]
+        public async Task GetFromJsonAsync_ShouldDeserialize_ResultBool()
+        {
+            // Arrange
+            var httpClient = PrepareFakeHandler(PrepareFakeDataBool1());
+
+            //Act
+            var result = await httpClient.GetFromJsonAsync<ResultBool>("/api/data");
+
+            // Assert
+            Assert.NotNull(result);
+
+            Assert.True(result.IsSuccess);
+            Assert.Null(result.Message);
+
+            Assert.True(result.Data);
         }
     }
 }
