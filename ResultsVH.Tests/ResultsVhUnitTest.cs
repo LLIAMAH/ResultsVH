@@ -214,7 +214,7 @@ namespace ResultsVH.Tests
             var httpClient = PrepareFakeHandler(PrepareFakeData1());
 
             // Act
-            var result = await httpClient.GetFromJsonAsync<ResultList<TestTypeModel>>("/api/data");
+            var result = await httpClient.GetFromJsonAsync<ResultList<TestTypeModel>>("/api/data", CancellationToken.None);
 
             // Assert
             Assert.NotNull(result);
@@ -239,7 +239,7 @@ namespace ResultsVH.Tests
             var httpClient = PrepareFakeHandler(PrepareFakeDataBool1());
 
             //Act
-            var result = await httpClient.GetFromJsonAsync<ResultBool>("/api/data");
+            var result = await httpClient.GetFromJsonAsync<ResultBool>("/api/data", CancellationToken.None);
 
             // Assert
             Assert.NotNull(result);
